@@ -45,12 +45,10 @@ class ProductManager{
       }
     }
 
-
-     //UPDATE
-     updateProduct=async(id,title,description,price,thumbnail,code,stock)=>{
+    pdateProduct=async(id,title,description,price,thumbnail,code,stock)=>{
         if(!id|| !title || !description || !price || !thumbnail|| !code||!stock){
-          console.error("INGRESE TODOS LOS DATOS DEL PRODUCTO PARA SU ACTUALIZACION")
-          return 
+            console.error("INGRESE TODOS LOS DATOS DEL PRODUCTO PARA SU ACTUALIZACION")
+            return 
         }
         else{
             const allproducts=await this.getProducts()
@@ -83,7 +81,7 @@ class ProductManager{
         const allproducts=await this.getProducts()
         const productswithoutfound=allproducts.filter(elemento=>elemento.id!==id)
         await fs.promises.writeFile(this.#path,JSON.stringify(productswithoutfound,null,2))
-      }
+    }
     getProductbyId=async(id)=>{
         const allproducts=await this.getProducts()
         const found=allproducts.find(element=>element.id===id)
